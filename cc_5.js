@@ -3,13 +3,18 @@ let employees =
 [
     {name: "Alondra", hourlyRate: 30, hoursWorked: 50}, 
     {name: "Fabian", hourlyRate: 25, hoursWorked: 40},
-    {name: "Alexis", hourlyRate: 20, hoursWorked: 35},
+    {name: "Alexis", hourlyRate: 20, hoursWorked: 60},
 ]; 
 
 //Step3
 function calculateBasePay(rate, hours)
-{return rate * Math.min(hours,40)};
-   
+{
+if (hours <= 40)
+{return rate * hours}
+    else 
+    {return rate * 40};
+}
+
 //Step4 
 function calculateOvertimePay(rate, hours)
 {return Math.max(hours - 40, 0) * rate * 1.5};
@@ -18,7 +23,7 @@ function calculateOvertimePay(rate, hours)
 function calculateTaxes(grossPay)
 {return grossPay * .85;}
 
-//Step6 
+//Step6
 function processPayRoll(employee)
 {
     let basePay = calculateBasePay(employee.hourlyRate, employee.hoursWorked);
